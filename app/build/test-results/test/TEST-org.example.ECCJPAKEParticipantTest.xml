@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.ECCJPAKEParticipantTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-08-28T20:47:50" hostname="DESKTOP-N5O0VU0" time="0.239">
+  <properties/>
+  <testcase name="testStateValidation()" classname="org.example.ECCJPAKEParticipantTest" time="0.05"/>
+  <testcase name="testConstruction()" classname="org.example.ECCJPAKEParticipantTest" time="0.002"/>
+  <testcase name="testValidateRound2PayloadReceived()" classname="org.example.ECCJPAKEParticipantTest" time="0.094"/>
+  <testcase name="testValidateRound1PayloadReceived()" classname="org.example.ECCJPAKEParticipantTest" time="0.032"/>
+  <testcase name="testSuccessfulExchange()" classname="org.example.ECCJPAKEParticipantTest" time="0.031"/>
+  <testcase name="testIncorrectPassword()" classname="org.example.ECCJPAKEParticipantTest" time="0.026"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
