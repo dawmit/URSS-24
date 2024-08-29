@@ -1,4 +1,3 @@
-
 package org.example;
 
 import java.math.BigInteger;
@@ -36,7 +35,7 @@ public class ECCJPAKECurve
         if (!skipChecks)
         {
             if(!q.isProbablePrime(20)) {
-                throw new IllegalArgumentException("Field size q must be prime"); //q must also be odd make sure of this
+                throw new IllegalArgumentException("Field size q must be prime");
             }
 
             if(!n.isProbablePrime(20)) {
@@ -47,10 +46,8 @@ public class ECCJPAKECurve
                 throw new IllegalArgumentException("The curve is singular, i.e the discriminant is equal to 0 mod q.");
             }
 
-            try {
-                curve.decodePoint(g.getEncoded(true)); //Maybe use isValid() from ECPoint
-            } catch(Exception e) {
-                throw new IllegalArgumentException("G does not lie on the curve", e);
+            if (!g.isValid()) {
+                throw new IllegalArgumentException("The base point G does not lie on the curve.");
             }
 
             BigInteger totalPoints = n.multiply(h);

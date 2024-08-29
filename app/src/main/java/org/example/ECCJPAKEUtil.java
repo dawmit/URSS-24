@@ -24,7 +24,6 @@ public class ECCJPAKEUtil
 {
     static final BigInteger ZERO = BigInteger.valueOf(0);
     static final BigInteger ONE = BigInteger.valueOf(1);
-    static final BigInteger INVALID_D = BigInteger.valueOf(-1);
 
     public static BigInteger generateX1(
         BigInteger q,
@@ -36,11 +35,7 @@ public class ECCJPAKEUtil
 
         byte[] returnedBits = new byte[(L + 7) / 8];
         random.nextBytes(returnedBits);
-
-        // Convert returnedBits to a non-negative integer c in the interval [0, 2^L - 1]
         BigInteger c = new BigInteger(1, returnedBits);
-
-        // Step 6: Calculate d = (c mod (n - 1)) + 1
         BigInteger d = c.mod(n.subtract(ONE)).add(ONE);
 
         return d;
@@ -156,7 +151,7 @@ public class ECCJPAKEUtil
         Digest digest, 
         ECPoint ecPoint)
     {
-        byte[] byteArray = ecPoint.getEncoded(true); //check this exactly
+        byte[] byteArray = ecPoint.getEncoded(true);
         digest.update(intToByteArray(byteArray.length), 0, 4);
         digest.update(byteArray, 0, byteArray.length);
         Arrays.fill(byteArray, (byte)0);
@@ -175,8 +170,7 @@ public class ECCJPAKEUtil
     public static void validateZeroKnowledgeProof(
         ECPoint generator, 
         ECPoint X, 
-        ECPoint V, 
-        BigInteger r, 
+        SchnorrZKP zkp,
         BigInteger q,
         BigInteger n,
         ECCurve curve,
@@ -185,6 +179,8 @@ public class ECCJPAKEUtil
         Digest digest)
         throws CryptoException
     {
+        ECPoint V = zkp.getV();
+        BigInteger r = zkp.getr();
     	/* ZKP: {V=G*v, r} */    	    	
     	BigInteger h = calculateHashForZeroKnowledgeProof(generator, V, X, userID, digest);
     	

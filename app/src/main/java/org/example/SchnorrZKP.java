@@ -9,7 +9,7 @@ class SchnorrZKP {
     private final ECPoint V;
     private final BigInteger r;
 
-    public SchnorrZKP(ECPoint V, BigInteger r) 
+    SchnorrZKP(ECPoint V, BigInteger r) 
     {
         this.V = V;
         this.r = r;
