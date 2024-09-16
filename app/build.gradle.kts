@@ -38,7 +38,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass.set("org.example.Test")
+    mainClass.set("org.example.ECJPAKEExample")
 }
 
 tasks.named<Test>("test") {
